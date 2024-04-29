@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Crimson Text:wght@700&display=swap" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="macbook-air-2">
@@ -44,11 +45,11 @@
                             <div class="bundles">Bundles</div>
                         </button>
                         <button class="frame-group">
-                            <div class="vector-wrapper">
+                            <!-- <div class="vector-wrapper">
                                 <img class="vector-icon3" alt=""
                                 src="{% static '/public/vector-3.svg' %}" />
-                            </div>
-                            <div class="new-feed">New Feed</div>
+                            </div> -->
+                            <div class="new-feed">Fetch Updates</div>
                         </button>
                     </div>
                     <div class="category-active-inner">
@@ -72,13 +73,13 @@
 
 
                 <div class="frame-container">
-                    <div class="frame-div">
+                    <div class="frame-div">                    
                         <form action="" method="POST">
                             {% csrf_token %} 
                             <div class="frame-parent1">                           
                                 
                                 <div class="rows-container">
-                                    <!-- Instagram rows -->
+
                                     <div class="frame-parent2">
                                         <div class="instagram-parent">
                                             <img class="instagram-icon" loading="lazy"
@@ -87,8 +88,9 @@
                                                 <div class="instagram">Instagram</div>
                                             </div>
                                         </div>
-                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="instagram_user_id" />
+                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="instagram_user_id"/>
                                     </div>
+
                                     <div class="frame-parent2">
                                         <div class="instagram-parent">
                                             <img class="instagram-icon" loading="lazy"
@@ -97,8 +99,9 @@
                                                 <div class="instagram">X</div>
                                             </div>
                                         </div>
-                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="x_user_id" />
+                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="x_user_id"/>
                                     </div>
+
                                     <div class="frame-parent2">
                                         <div class="instagram-parent">
                                             <img class="instagram-icon" loading="lazy"
@@ -110,8 +113,7 @@
                                         <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="facebook_user_id"/>
                                     </div>
                                 </div>
-                                <button class="add-button">Add</button>
-                            
+                                <button class="add-button">Add</button>                        
                             </div>
                         </form>
 
@@ -127,8 +129,7 @@
                                 </div>
                                 <div>
                                     <img src="{{ post.post_media_url }}" alt="Photo">
-                                </div>
-                                
+                                </div>                                
                             </div>
                         {% endfor %}
 
@@ -140,6 +141,6 @@
             </section>
         </main>
     </div>
-<script src="{% static '/button.js' %}"></script>
+    <script src="{% static '/button.js' %}"></script>
 </body>
 </html>
