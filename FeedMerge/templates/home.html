@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <link rel="stylesheet" href="{% static '/global.css' %}">
+    <title>FeedMerge</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Crimson Text:wght@700&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+</head>
+<body>
+    <div class="macbook-air-2">
+        <header class="rectangle-parent">
+            <div class="frame-child"></div>
+            <h2 class="feedmerge">FeedMerge</h2>
+            <div class="frame-wrapper">
+                <div class="search-field-parent">
+                    <div class="search-field">
+                        <img class="vector-icon" alt="" src="{% static '/public/vector.svg' %}" />
+                    </div>
+                    <!-- <div class="search">Search</div> -->
+                    <input type="text" class="search" placeholder="Search">
+                </div>
+            </div>
+        </header>
+        <main class="macbook-air-2-inner">
+            <section class="category-active-parent">
+                <div class="category-active">
+                    <div class="frame-parent">
+                        <button class="vector-group">
+                            <img class="vector-icon2" alt=""
+                                src="{% static '/public/vector-1.svg' %}" />
+                            <div class="all-feeds-container">
+                                <div class="all-feeds">All feeds</div>
+                            </div>
+                        </button>
+                        <button class="vector-group">
+                            <img class="vector-icon2" alt=""
+                            src="{% static '/public/vector-2.svg' %}" />
+                            <div class="bundles">Bundles</div>
+                        </button>
+                        <button class="frame-group">
+                            <div class="vector-wrapper">
+                                <img class="vector-icon3" alt=""
+                                src="{% static '/public/vector-3.svg' %}" />
+                            </div>
+                            <div class="new-feed">New Feed</div>
+                        </button>
+                    </div>
+                    <div class="category-active-inner">
+                        <div class="followed-parent">
+                            <div class="followed">Followed</div>
+                            <div class="enter-username-input-wrapper">
+                                <div class="enter-username-input">
+                                    {% for user in feeds %}
+                                        <div class="nasa">@{{user.user_id}}</div>
+                                    {% endfor %}
+                                    <!-- <div class="nasa">@NASA</div>
+                                    <div class="darwin-jobs">@Darwin Jobs</div>
+                                    <div class="marvel">@Marvel</div>
+                                    <div class="disney">@Disney</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="frame-container">
+                    <div class="frame-div">
+                        <form action="" method="POST">
+                            {% csrf_token %} 
+                            <div class="frame-parent1">                           
+                                
+                                <div class="rows-container">
+                                    <!-- Instagram rows -->
+                                    <div class="frame-parent2">
+                                        <div class="instagram-parent">
+                                            <img class="instagram-icon" loading="lazy"
+                                                alt="" src="{% static '/public/instagram.svg' %}" />
+                                            <div class="instagram-wrapper">
+                                                <div class="instagram">Instagram</div>
+                                            </div>
+                                        </div>
+                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="instagram_user_id" />
+                                    </div>
+                                    <div class="frame-parent2">
+                                        <div class="instagram-parent">
+                                            <img class="instagram-icon" loading="lazy"
+                                                alt="" src="{% static '/public/twitter.svg' %}" />
+                                            <div class="instagram-wrapper">
+                                                <div class="instagram">X</div>
+                                            </div>
+                                        </div>
+                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="x_user_id" />
+                                    </div>
+                                    <div class="frame-parent2">
+                                        <div class="instagram-parent">
+                                            <img class="instagram-icon" loading="lazy"
+                                                alt="" src="{% static '/public/facebook.svg' %}" />
+                                            <div class="instagram-wrapper">
+                                                <div class="instagram">Facebook</div>
+                                            </div>
+                                        </div>
+                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="facebook_user_id"/>
+                                    </div>
+                                </div>
+                                <button class="add-button">Add</button>
+                            
+                            </div>
+                        </form>
+
+
+                        {% for post in posts %}
+                            <div class="frame-parent4">
+                                <div class="marvel-parent">
+                                    <div class="marvel1">@{{post.user_id}}</div>
+                                    <div class="am-apr-22">{{post.post_time}} from {{post.platform}}</div>
+                                </div>
+                                <div class="new-trailer-tomorrow">
+                                    {{post.post_text}}
+                                </div>
+                                <div>
+                                    <img src="{{ post.post_media_url }}" alt="Photo">
+                                </div>
+                                
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+
+
+            </section>
+        </main>
+    </div>
+<script src="{% static '/button.js' %}"></script>
+</body>
+</html>
