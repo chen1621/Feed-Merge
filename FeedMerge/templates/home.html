@@ -11,7 +11,6 @@
         href="https://fonts.googleapis.com/css2?family=Crimson Text:wght@700&display=swap" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="macbook-air-2">
@@ -23,7 +22,6 @@
                     <div class="search-field">
                         <img class="vector-icon" alt="" src="{% static '/public/vector.svg' %}" />
                     </div>
-                    <!-- <div class="search">Search</div> -->
                     <input type="text" class="search" placeholder="Search">
                 </div>
             </div>
@@ -32,13 +30,15 @@
             <section class="category-active-parent">
                 <div class="category-active">
                     <div class="frame-parent">
-                        <button class="vector-group">
-                            <img class="vector-icon2" alt=""
-                                src="{% static '/public/vector-1.svg' %}" />
-                            <div class="all-feeds-container">
-                                <div class="all-feeds">All feeds</div>
-                            </div>
-                        </button>
+                        <a href="{% url 'home' %}" style="text-decoration: none;">
+                            <button class="vector-group">
+                                <img class="vector-icon2" alt=""
+                                    src="{% static '/public/vector-1.svg' %}" />
+                                <div class="all-feeds-container">
+                                    <div class="all-feeds">All feeds</div>
+                                </div>
+                            </button>
+                        </a>
                         <button class="vector-group">
                             <img class="vector-icon2" alt=""
                             src="{% static '/public/vector-2.svg' %}" />
@@ -55,17 +55,14 @@
                     <div class="category-active-inner">
                         <div class="followed-parent">
                             <div class="followed">Followed</div>
-                            <div class="enter-username-input-wrapper">
-                                <div class="enter-username-input">
-                                    {% for user in feeds %}
-                                        <div class="nasa">@{{user.user_id}}</div>
-                                    {% endfor %}
-                                    <!-- <div class="nasa">@NASA</div>
-                                    <div class="darwin-jobs">@Darwin Jobs</div>
-                                    <div class="marvel">@Marvel</div>
-                                    <div class="disney">@Disney</div> -->
-                                </div>
+                           
+                            <div class="enter-username-input">
+                                {% for user in feeds %}
+                                    <!-- <div class="nasa">@{{user.user_id}}</div> -->
+                                    <a href="#" class="nasa" data-user-id="{{ user.user_id }}">@{{ user.user_id }}</a>
+                                {% endfor %}
                             </div>
+                         
                         </div>
                     </div>
                 </div>
@@ -79,7 +76,16 @@
                             <div class="frame-parent1">                           
                                 
                                 <div class="rows-container">
-
+                                    {% if messages %}
+                                    <div class="messages">
+                                        {% for message in messages %}
+                                        <div class="{{ message.tags }}">
+                                            {{ message }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    
                                     <div class="frame-parent2">
                                         <div class="instagram-parent">
                                             <img class="instagram-icon" loading="lazy"
@@ -88,7 +94,8 @@
                                                 <div class="instagram">Instagram</div>
                                             </div>
                                         </div>
-                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="instagram_user_id"/>
+                                        <input class="username-input frame-item" placeholder="Enter username to add the feeds" type="text" name="instagram_user_id" data-feed-type="instagram"/>
+                                        <span class="status"></span>
                                     </div>
 
                                     <div class="frame-parent2">
@@ -99,7 +106,8 @@
                                                 <div class="instagram">X</div>
                                             </div>
                                         </div>
-                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="x_user_id"/>
+                                        <input class="username-input frame-item" placeholder="Enter username to add the feeds" type="text" name="x_user_id" data-feed-type="x"/>
+                                        <span class="status"></span>
                                     </div>
 
                                     <div class="frame-parent2">
@@ -110,7 +118,8 @@
                                                 <div class="instagram">Facebook</div>
                                             </div>
                                         </div>
-                                        <input class="frame-item" placeholder="Enter username to add the feeds" type="text" name="facebook_user_id"/>
+                                        <input class="username-input frame-item" placeholder="Enter username to add the feeds" type="text" name="facebook_user_id" data-feed-type="facebook"/>
+                                        <span class="status"></span>
                                     </div>
                                 </div>
                                 <button class="add-button">Add</button>                        
@@ -122,11 +131,10 @@
                             <div class="frame-parent4">
                                 <div class="marvel-parent">
                                     <div class="marvel1">@{{post.user_id}}</div>
-                                    <div class="am-apr-22">{{post.post_time}} from {{post.platform}}</div>
+                                    <div class="am-apr-22">{{ post.post_time|date:"d M Y H:i" }} from {{ post.platform|capfirst }}</div>
                                 </div>
-                                <div class="new-trailer-tomorrow">
-                                    {{post.post_text}}
-                                </div>
+                                <div class="new-trailer-tomorrow">{{ post.post_text|linebreaksbr }}</div>
+                                <a href="{{ post.post_url }}" class="post-link-button">See on {{ post.platform|capfirst }}</a>
                                 <div>
                                     <img src="{{ post.post_media_url }}" alt="Photo">
                                 </div>                                
@@ -142,5 +150,6 @@
         </main>
     </div>
     <script src="{% static '/button.js' %}"></script>
+    <script src="{% static '/filter.js' %}"></script>
 </body>
 </html>

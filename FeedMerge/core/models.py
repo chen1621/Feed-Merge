@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Platforms(models.TextChoices):
     TWITTER = 'twitter'
@@ -12,7 +13,7 @@ class Feed(models.Model):
     user_id = models.CharField(max_length=100)  #feed id of social media platform
     feed_url = models.TextField()
     feed_name = models.CharField(max_length=255) # for user to write the name
-    last_update_date = models.DateTimeField()
+    last_update_date = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
             if not self.feed_line_no:

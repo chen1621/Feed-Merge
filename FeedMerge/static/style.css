@@ -4,6 +4,32 @@ html, body {
   overflow: hidden;
 }
 
+.messages div {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.messages .warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+
+.post-link-button {
+  color: var(--dark-green);  /* Adjust to match your theme colors */
+  text-align: center;
+  border-radius: 4px;  /* Rounded corners */
+  display: inline-block;  /* Allows sizing */
+  margin-top: 10px;  /* Space above the button */
+  cursor: pointer;  /* Pointer cursor on hover */
+}
+.post-link-button:hover {
+  color: #759c45;  /* Darker shade on hover */
+}
+
 .frame-child {
     height: 69px;
     width: 1280px;
@@ -164,10 +190,9 @@ html, body {
     border: 2px solid var(--dark-green);
     padding: var(--padding-mini) var(--padding-xl);
     background-color: white;
-    width: 184px;
+    /* width: 184px; */
     height: 58px;
     border-radius: var(--br-5xs);
-    box-sizing: border-box;
     overflow: hidden;
     flex-shrink: 0;
     display: flex;
@@ -175,6 +200,8 @@ html, body {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 14.9px;
+    box-sizing: border-box;
+    width: 100%;
   }
   .vector-group:hover {
     background-color: rgba(117, 156, 69, 0.09);
@@ -191,13 +218,13 @@ html, body {
     height: 19px;
     position: relative;
   }
-  .vector-wrapper {
+  /* .vector-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     padding: var(--padding-12xs) 0 0;
-  }
+  } */
   .new-feed {
     position: relative;
     font-size: var(--font-size-base);
@@ -215,6 +242,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    /* justify-content: space-evenly; */
   }
   .frame-group {
     cursor: pointer;
@@ -226,11 +254,20 @@ html, body {
     flex-direction: row;
     gap: 17px;
   }
+
+  .frame-group:hover {
+    background-color: #759c45;  /* Darker shade on hover */
+  }
+
   .frame-parent {
     height: 212px;
     flex-shrink: 0;
+    /* flex-shrink: 1; */
     flex-direction: column;
     gap: var(--gap-9xl);
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
   }
   .followed,
   .nasa {
@@ -241,11 +278,31 @@ html, body {
     display: inline-block;
     min-width: 87px;
   }
-  .nasa {
+
+  /* .nasa {
     width: 93px;
     display: flex;
     align-items: center;
-  }
+    font-size: 17px;
+    color: black; 
+  } */
+
+  .nasa {
+    cursor: pointer;
+    /* color: var(--dark-green); */
+    color: black;
+
+    text-decoration: none;  /* Underline to signify it's clickable */
+    padding: 2px;  /* Padding for better clickability */
+    display: block;  /* Block to take full width of its container */
+    font-size: 17px;
+    font-weight: 410;
+}
+
+.nasa:hover {
+  color: #759c45;  /* Darker shade on hover */
+}
+
   .darwin-jobs {
     align-self: stretch;
     position: relative;
@@ -269,12 +326,14 @@ html, body {
     align-items: flex-start;
     justify-content: flex-start;
   }
-  .enter-username-input-wrapper {
+
+  /* .enter-username-input-wrapper {
     align-self: stretch;
     flex-direction: row;
     padding: 0 0 0 var(--padding-9xs);
     color: var(--color-black);
-  }
+  } */
+
   .followed-parent {
     flex: 1;
     flex-direction: column;
@@ -286,7 +345,9 @@ html, body {
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-end;
+    /* justify-content: space-evenly; */
     padding: 0 12px 0 16px;
+
   }
   .category-active {
     top: 85px;
@@ -296,17 +357,40 @@ html, body {
     border-radius: var(--br-8xs);
     background-color: var(--white);
     overflow-y: auto;
-
     max-height: 100vh;
     /* flex-shrink: 0; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: flex-start;
-    padding: var(--padding-2xs) 9px 235px var(--padding-5xs);
+    /* justify-content: flex-start; */
+    /* justify-content: space-evenly; */
+    /* padding: var(--padding-2xs) 9px 235px var(--padding-5xs); */
+    padding: var(--padding-2xs) 9px 9px var(--padding-5xs);
     box-sizing: border-box;
     gap: 55px;
   }
+
+  /* Scrollbar styles for .category-active */
+  .category-active::-webkit-scrollbar {
+    width: 8px; /* width of the entire scrollbar */
+  }
+
+  .category-active::-webkit-scrollbar-track {
+    background: #f0f0f0; /* color of the track, light grey */
+  }
+
+  .category-active::-webkit-scrollbar-thumb {
+    background-color: #dcdcdc; /* color of the scroll thumb, shallow grey */
+    border-radius: 4px; /* rounded corners for the thumb */
+    border: 2px solid #f0f0f0; /* optional: adds a border to the thumb */
+  }
+
+  /* Optional: styling for hover over the scrollbar thumb */
+  .category-active::-webkit-scrollbar-thumb:hover {
+    background-color: #bcbcbc; /* darker shade of grey when hovering over the thumb */
+  }
+
+
   .instagram-icon {
     height: 31px;
     width: 31px;
@@ -568,6 +652,14 @@ html, body {
   margin-right: 10px;
 }
 
+
+
+
+.add-button:hover {
+  background-color: #759c45;;  /* Darker shade on hover */
+}
+
+
   .marvel1 {
     position: relative;
     font-weight: 600;
@@ -578,8 +670,11 @@ html, body {
     align-self: stretch;
     position: relative;
     color: var(--grey-font);
-    white-space: pre-wrap;
     flex-shrink: 0;
+    /* white-space: pre-wrap; */
+    white-space: nowrap;
+    overflow: visible;
+    min-width: fit-content;
   }
   .marvel-parent {
     width: 387px;
@@ -590,12 +685,15 @@ html, body {
     gap: var(--gap-2xs);
     max-width: 100%;
   }
+
   .new-trailer-tomorrow {
     position: relative;
     display: block;
     max-width: 100%;
     word-wrap: break-word;
+    white-space: pre-wrap;
   }
+
   .frame-parent4 {
     align-self: stretch;
     border-radius: var(--br-8xs);
@@ -604,13 +702,23 @@ html, body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: var(--padding-mid) var(--padding-xl) var(--padding-11xl)
-      var(--padding-18xl);
+    padding: var(--padding-mid) var(--padding-xl) var(--padding-11xl) var(--padding-18xl);
     box-sizing: border-box;
     gap: var(--gap-3xl);
-    max-width: 100%;
+    max-width: 100%;  /* Ensures the div does not stretch beyond this point */
+    width: 100%;  /* Fixes width to be consistent */
     overflow: hidden;
   }
+
+  .frame-parent4 img {
+    max-width: 100%;  /* Ensures the image is no wider than its container */
+    max-height: 300px;  /* Maximum height for the image */
+    object-fit: contain;  /* Makes the image scale to fit while maintaining aspect ratio without cropping */
+    display: block;  /* Removes bottom space/gap */
+    margin: auto;  /* Centers image in the case it is smaller than the container */
+}
+
+
   .marvel2 {
     position: relative;
     font-weight: 600;
@@ -672,6 +780,7 @@ html, body {
     max-width: calc(100% - 197px);
     flex-shrink: 0;
     color: var(--color-black);
+    overflow-y: auto;
   }
   .category-active-parent,
   .macbook-air-2-inner {
@@ -701,9 +810,10 @@ html, body {
   .macbook-air-2 {
     overflow-x: hidden;
     overflow-y: auto;
+    
     min-height: 100vh;
     width: 100%;
-    position: absolute;
+    position: relative;
     background-color: var(--grey);
     display: flex;
     flex-direction: column;
@@ -772,4 +882,3 @@ html, body {
       box-sizing: border-box;
     }
   }
-  
